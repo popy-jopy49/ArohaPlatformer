@@ -1,0 +1,4 @@
+repository "Aroha Platformer@Redstar_Interactive@cloud"
+  path "/"
+    br "/main"
+    co "/main"
