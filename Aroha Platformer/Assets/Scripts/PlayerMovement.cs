@@ -68,6 +68,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void Respawn(Vector2 pos)
+    {
+        transform.position = pos;
+    }
+
     public Collider2D[] GetHits() => hits;
 
     private bool IsGrounded() => Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);

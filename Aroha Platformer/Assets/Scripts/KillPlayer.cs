@@ -9,14 +9,15 @@ public class KillPlayer : MonoBehaviour
     {
         Collider2D[] hits = Player.GetComponent<PlayerMovement>().GetHits();
 
-        if (hits.Length <= 0)
+        if (hits == null || hits.Length <= 0)
             return;
 
+        print(hits.Length);
         foreach (Collider2D hit in hits)
         {
-            if (hit.CompareTag("Player"))
+            if (hit.CompareTag(tag))
             {
-                Player.transform.position = respawnPoint.position;
+                Player.GetComponent<PlayerMovement>().Respawn(respawnPoint.position);
             }
         }
     }
