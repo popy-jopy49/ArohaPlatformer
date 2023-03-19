@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 velocity;
     Transform groundCheck;
     BoxCollider2D boxCollider;
+    Collider2D[] hits;
 
     private void Awake()
     {
@@ -51,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
         transform.Translate(velocity * Time.deltaTime, Space.World);
 
-        Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, boxCollider.size, 0);
+        hits = Physics2D.OverlapBoxAll(transform.position, boxCollider.size, 0);
 
         foreach (Collider2D hit in hits)
         {
@@ -66,6 +67,8 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+    public Collider2D[] GetHits() => hits;
 
     private bool IsGrounded() => Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
 
