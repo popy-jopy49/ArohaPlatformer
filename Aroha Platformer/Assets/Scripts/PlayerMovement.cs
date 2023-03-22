@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float groundCheckRadius;
+    [SerializeField] private float deadlyYPos;
     Vector2 velocity;
     Transform groundCheck;
     BoxCollider2D boxCollider;
@@ -66,14 +67,17 @@ public class PlayerMovement : MonoBehaviour
                 transform.Translate(colliderDistance.pointA - colliderDistance.pointB);
             }
         }
+
+        if (transform.position.y <= deadlyYPos)
+        {
+            Respawn(GameManager.I.GetRespawnPos());
+        }
     }
 
     public void Respawn(Vector2 pos)
     {
         transform.position = pos;
     }
-
-    public Collider2D[] GetHits() => hits;
 
     private bool IsGrounded() => Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
 

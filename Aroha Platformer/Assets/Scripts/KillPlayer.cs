@@ -7,17 +7,16 @@ public class KillPlayer : MonoBehaviour
 
     void Update()
     {
-        Collider2D[] hits = Player.GetComponent<PlayerMovement>().GetHits();
+        Collider2D[] hits = GameManager.I.PlayerCollisions;
 
         if (hits == null || hits.Length <= 0)
             return;
 
-        print(hits.Length);
         foreach (Collider2D hit in hits)
         {
             if (hit.CompareTag(tag))
             {
-                Player.GetComponent<PlayerMovement>().Respawn(respawnPoint.position);
+                Player.GetComponent<PlayerMovement>().Respawn(GameManager.I.GetRespawnPos());
             }
         }
     }
