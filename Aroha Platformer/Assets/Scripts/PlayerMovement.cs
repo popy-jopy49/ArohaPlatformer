@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
         foreach (Collider2D hit in hits)
         {
-            if (hit == boxCollider)
+            if (hit == boxCollider || hit.isTrigger)
                 continue;
 
             ColliderDistance2D colliderDistance = hit.Distance(boxCollider);

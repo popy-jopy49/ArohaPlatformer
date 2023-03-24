@@ -15,8 +15,10 @@ public class Win : MonoBehaviour
     {
         Collider2D[] hits = GameManager.I.PlayerCollisions;
 
+        print(hits.Length);
         foreach (Collider2D hit in hits)
         {
+            print(bCol + " " + hit);
             if (hit == bCol)
             {
                 SceneManager.LoadScene(levelToLoad);
