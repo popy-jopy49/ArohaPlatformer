@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class KillPlayer : MonoBehaviour
 {
-    public GameObject Player;
-    public Transform respawnPoint;
 
     void Update()
     {
@@ -16,7 +14,7 @@ public class KillPlayer : MonoBehaviour
         {
             if (hit.CompareTag(tag))
             {
-                Player.GetComponent<PlayerMovement>().Respawn(GameManager.I.GetRespawnPos());
+                GameManager.I.GetPlayerMovement().Respawn(GameManager.I.GetRespawnPos());
             }
         }
     }

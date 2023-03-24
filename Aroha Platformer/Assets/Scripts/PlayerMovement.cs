@@ -54,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(velocity * Time.deltaTime, Space.World);
 
         hits = Physics2D.OverlapBoxAll(transform.position, boxCollider.size, 0);
+        GameManager.I.PlayerCollisions = hits;
 
         foreach (Collider2D hit in hits)
         {
