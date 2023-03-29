@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 3
   gravity: -20
-  jumpHeight: 5
+  jumpHeight: 6.5
   terminalDownwardVelocity: -100
   drag: 0.97
   groundLayer:

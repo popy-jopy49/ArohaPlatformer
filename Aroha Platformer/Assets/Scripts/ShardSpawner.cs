@@ -1,7 +1,8 @@
+using SWAssets;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShardSpawner : MonoBehaviour
+public class ShardSpawner : Singleton<ShardSpawner>
 {
 
     private float minPos;
