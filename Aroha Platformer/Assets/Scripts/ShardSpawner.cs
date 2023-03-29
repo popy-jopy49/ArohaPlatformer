@@ -10,29 +10,25 @@ public class ShardSpawner : MonoBehaviour
     [SerializeField] private float offsetFromPlayer;
     [SerializeField] private float deathInterval;
     [SerializeField] private float spawnInterval;
+    [SerializeField] private int shardAmount = 3;
 
-    List<float> shards = new List<float>();
+    List<Transform> shards = new List<Transform>();
     Transform shardParent;
     Transform player;
+    Transform canvas;
 
     private void Awake()
     {
         shardParent = GameObject.Find("Shards").transform;
         player = GameManager.I.GetPlayerMovement().transform;
-        InvokeRepeating(nameof(Spawn), 0, spawnInterval);
-    }
+        canvas = GameObject.Find("Canvas").transform;
 
-    private void Update()
-    {
-        foreach (float shard in shards)
-        {
-            GameManager.I.Indicate(shard);
-        }
+        InvokeRepeating(nameof(Spawn), 0, spawnInterval);
     }
 
     private void Spawn()
     {
-        for (int i = 0; i < Random.Range(0, 10); i++)
+        for (int i = 0; i < Random.Range(0, shardAmount); i++)
         {
             SpawnSingular();
         }
@@ -44,8 +40,12 @@ public class ShardSpawner : MonoBehaviour
         maxPos = player.position.x + offsetFromPlayer;
 
         float xPos = Random.Range(minPos, maxPos) + fixedOffset;
-        shards.Add(xPos);
-        Destroy(Instantiate(GameAssets.I.ShardPrefab, new Vector2(xPos, 100), Quaternion.identity, shardParent), deathInterval);
+        Vector2 iPos = new Vector2(Camera.main.WorldToScreenPoint(new Vector2(xPos, 0)).x, 10);
+        Indicator i = Instantiate(GameAssets.I.IndicatorPrefab, canvas, false).GetComponent<Indicator>();
+        i.transform.localPosition = iPos;
+        Transform s = Instantiate(GameAssets.I.ShardPrefab, new Vector2(xPos, 100), Quaternion.identity, shardParent).transform;
+        i.Assign(s);
+        Destroy(s.gameObject, deathInterval);
     }
 
 }
