@@ -18,7 +18,7 @@ public class Indicator : MonoBehaviour
             return;
         }
 
-        transform.localPosition = new Vector2(Camera.main.WorldToScreenPoint(new Vector2(shard.position.x, 0)).x - 950f, transform.localPosition.y);
+        transform.localPosition = new Vector2(Camera.main.WorldToScreenPoint(new Vector2(shard.position.x, 0)).x - 960f, transform.localPosition.y);
     }
 
 }
