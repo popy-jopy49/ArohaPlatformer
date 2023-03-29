@@ -3127,7 +3127,7 @@ MonoBehaviour:
   _dontDestroyOnLoad: 0
   Respawn: {fileID: 532482418}
   PlayerCollisions: []
-  Player: {fileID: 0}
+  player: {fileID: 0}
 --- !u!4 &1230036323
 Transform:
   m_ObjectHideFlags: 0
