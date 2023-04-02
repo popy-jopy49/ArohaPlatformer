@@ -18,7 +18,7 @@ public class ShardSpawner : Singleton<ShardSpawner>
     Transform player;
     Transform canvas;
 
-    private void Awake()
+    private void Start()
     {
         shardParent = GameObject.Find("Shards").transform;
         player = GameManager.I.GetPlayerMovement().transform;

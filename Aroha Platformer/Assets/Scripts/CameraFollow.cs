@@ -4,9 +4,13 @@ public class CameraFollow : MonoBehaviour
 {
     public float FollowSpeed = 2f;
     public float yOffset =1f;
-    public Transform target;
+    private Transform target;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        target = GameObject.Find("Player").transform;
+    }
+
     void Update()
     {
         Vector3 newPos = new Vector3(target.position.x, target.position.y,-10f);
