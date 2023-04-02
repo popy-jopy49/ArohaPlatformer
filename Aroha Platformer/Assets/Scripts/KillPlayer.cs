@@ -12,6 +12,9 @@ public class KillPlayer : MonoBehaviour
 
         foreach (Collider2D hit in hits)
         {
+            if (!hit)
+                continue;
+
             if (hit.CompareTag(tag))
             {
                 GameManager.I.GetPlayerMovement().Respawn(GameManager.I.GetRespawnPos());
