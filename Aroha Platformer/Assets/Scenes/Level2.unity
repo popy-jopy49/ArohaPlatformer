@@ -938,7 +938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FollowSpeed: 2
   yOffset: 2.73
-  target: {fileID: 0}
+  target: {fileID: 854857769}
 --- !u!1 &532482417
 GameObject:
   m_ObjectHideFlags: 0
@@ -1945,6 +1945,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b63065ee7cfb03447aa56c068d976816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &854857769 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7497358459510107143, guid: d4041537788dec945b0a924f94cab306, type: 3}
+  m_PrefabInstance: {fileID: 854857767}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &917030629
 GameObject:
   m_ObjectHideFlags: 0
