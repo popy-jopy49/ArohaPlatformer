@@ -1,7 +1,8 @@
+using SWAssets;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShardSpawner : MonoBehaviour
+public class ShardSpawner : Singleton<ShardSpawner>
 {
 
     private float minPos;
@@ -28,7 +29,7 @@ public class ShardSpawner : MonoBehaviour
 
     private void Spawn()
     {
-        for (int i = 0; i < Random.Range(0, shardAmount); i++)
+        for (int i = 0; i < Random.Range(1, shardAmount + 1); i++)
         {
             SpawnSingular();
         }
@@ -40,7 +41,7 @@ public class ShardSpawner : MonoBehaviour
         maxPos = player.position.x + offsetFromPlayer;
 
         float xPos = Random.Range(minPos, maxPos) + fixedOffset;
-        Vector2 iPos = new Vector2(Camera.main.WorldToScreenPoint(new Vector2(xPos, 0)).x, 10);
+        Vector2 iPos = new Vector2(Camera.main.WorldToScreenPoint(new Vector2(xPos, 0)).x, 540);
         Indicator i = Instantiate(GameAssets.I.IndicatorPrefab, canvas, false).GetComponent<Indicator>();
         i.transform.localPosition = iPos;
         Transform s = Instantiate(GameAssets.I.ShardPrefab, new Vector2(xPos, 100), Quaternion.identity, shardParent).transform;
